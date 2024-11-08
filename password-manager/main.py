@@ -1,23 +1,17 @@
 from tkinter import *
 from tkinter import messagebox
-import random
+from random import randint, choice, shuffle
 import pyperclip as clip
 letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
 numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
 symbols = ['!', '#', '$', '%', '&', '(', ')', '*', '+']
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
 def password_generator():
-    random_password = []
-    no_letter = random.randint(4,10)
-    no_numbers = random.randint(3,5)
-    no_symbols = random.randint(2,4)
-    for _ in range(no_letter):
-        random_password.append(random.choice(letters))
-    for _ in range(no_numbers):
-        random_password.append(random.choice(numbers))
-    for _ in range(no_symbols):
-        random_password.append(random.choice(symbols))
-    random.shuffle(random_password)
+    password_letter = [choice(letters) for _ in range(randint(6,10))]
+    password_number = [choice(numbers) for _ in range(randint(3,5))]
+    password_symbol = [choice(symbols) for _ in range(randint(2,4))]
+    random_password = password_letter + password_number + password_symbol
+    shuffle(random_password)
     password_string = ''.join(random_password)
     passw_entry.delete(0,END)
     passw_entry.insert(0,password_string)
