@@ -66,7 +66,7 @@ def search_password():
         with open("password.json",'r') as data_file:
             data = json.load(data_file)
             if website_name in data.keys():
-                messagebox.showinfo(title="Search Result",message=f"Website Name: {website_name}\nEmail ID: {data[website_name]["email"]}\nPassword: {data[website_name]["password"]}")
+                messagebox.showinfo(title="Search Result",message=f"Website: {website_name}\nEmail ID: {data[website_name]["email"]}\nPassword: {data[website_name]["password"]}")
             else:
                 raise KeyError
     except FileNotFoundError:
